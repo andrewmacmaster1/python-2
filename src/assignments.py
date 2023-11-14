@@ -26,3 +26,18 @@ def ex2():
     
     filtered_list = filter_males(people_list)
     print(filtered_list)
+
+def ex3():
+    people_list = [
+    {'id': 2, 'name': 'bob',     'weight_kg': 90, 'height_meters': 1.7},
+    {'id': 3, 'name': 'charlie', 'weight_kg': 80, 'height_meters': 1.8},
+    ]
+
+    def calc_bmi(people):
+        for person in people:
+            person['bmi'] = round(person['weight_kg'] / person['height_meters'] ** 2, 1)
+
+        return people
+    
+    new_people_list = calc_bmi(people_list)
+    print(new_people_list)
