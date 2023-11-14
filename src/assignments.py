@@ -1,6 +1,7 @@
 # define your methods here.
 # ex1() - ex10()
 import pprint
+import random
 
 def ex1():
     people_list = [
@@ -177,3 +178,31 @@ def ex8():
             return new_car
         
     print(CarCollector.get_data())
+
+def ex9():
+    class Character:
+
+        def __init__(self, hit_points):
+            self.hit_points = hit_points
+
+        def fight(self, character):
+            random_number = random.randint(1, 20)
+            character.hit_points -= random_number
+            if character.hit_points < 0: character.hit_points = 0
+
+    class Fighter(Character):
+        def __repr__(self):
+            return f'Fighter: {self.hit_points}.'
+        
+    class Drawf(Character):
+        def __repr__(self):
+            return f'Drawf: {self.hit_points}.'
+        
+    f = Fighter(18)
+    d = Drawf(15)
+    print(f)
+    print(d)
+    f.fight(d)
+    d.fight(f)
+    print(f)
+    print(d)
