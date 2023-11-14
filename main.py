@@ -1,5 +1,5 @@
 # Execute your methods here.
-from src import *
+from src.assignments import *
 
 
 def main():
