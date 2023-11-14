@@ -211,10 +211,10 @@ def ex9():
 def ex10():
     @dataclass(frozen=False, order=True)
     class Invoice:
-        invoice_id: str
-        user_id: str
-        amount: str
-        paid: str
+        invoice_id: int
+        user_id: int
+        amount: float
+        paid: bool
 
 
     data = [
@@ -228,5 +228,9 @@ def ex10():
     invoices = list()
     for datum in data:
         info = datum.split()
-        invoices.append(Invoice(info[0].strip(','), info[1].strip(','), info[2].strip(','), info[3].strip(',')))
+        if info[3] == 'False':
+            paid = False
+        else:
+            paid = True
+        invoices.append(Invoice(int(info[0].strip(',')), int(info[1].strip(',')), float(info[2].strip(',')), paid))
     print(invoices)
