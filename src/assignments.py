@@ -41,3 +41,15 @@ def ex3():
     
     new_people_list = calc_bmi(people_list)
     print(new_people_list)
+
+def ex4():
+    people_list = [
+    {'name': 'alice',   'age': 20, 'weight': 160, 'sex': 'male',   'id': 1},
+    {'name': 'bob',     'age': 10, 'weight': 130, 'sex': 'male',   'id': 2},
+    {'name': 'charlie', 'age': 15, 'weight': 120, 'sex': 'female', 'id': 3},
+    ]
+
+    def get_people(people):
+        return [person['name'] for person in people if person['age'] >= 15]
+    
+    print(get_people(people_list))
