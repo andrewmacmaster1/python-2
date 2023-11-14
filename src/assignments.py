@@ -37,10 +37,14 @@ def ex3():
     ]
 
     def calc_bmi(people):
-        for person in people:
-            person['bmi'] = round(person['weight_kg'] / person['height_meters'] ** 2, 1)
+        new_people = list(map(lambda p : {'id': p['id'],
+                                          'name': p['name'],
+                                          'weight_kg': p['weight_kg'],
+                                          'height_meters': p['height_meters'],
+                                          'bmi': round(p['weight_kg'] / p['height_meters'] ** 2, 1)
+                                          }, people))
 
-        return people
+        return new_people
     
     new_people_list = calc_bmi(people_list)
     print(new_people_list)
@@ -63,16 +67,15 @@ def ex5():
             self.sentence = sentence
 
         def count_words(self):
-            self.word_count = len(self.sentence.split())
+            self.__word_count = len(self.sentence.split())
         
         def get_word_count(self):
-            return self.word_count
+            return self.__word_count
         
         def get_shortest_word(self):
             shortest = None
             for word in self.sentence.split():
-                if not shortest: shortest = word
-                if len(word) < len(shortest): shortest = word
+                if not shortest or len(word) < len(shortest): shortest = word
 
             return len(shortest)
         
@@ -96,17 +99,17 @@ def ex6():
         def __init__(self, items, tax):
             self.items = items
             self.tax = float(tax[:-1])/100
-            self.total = 0
+            self.__total = 0
 
         def calc_total(self):
             total = 0
             for item in self.items:
                 total += item['price'] + item['price']*self.tax
             
-            self.total = total
+            self.__total = total
 
         def get_total(self):
-            return self.total
+            return self.__total
         
     items = [
         {"id": 1, "desc": "clock", "price": 1.00},
@@ -122,22 +125,22 @@ def ex7():
         def __init__(self, first, second):
             self.first = first
             self.second = second
-            self.result = 0
+            self.__result = 0
 
         def add(self):
-            self.result = self.first + self.second
+            self.__result = self.first + self.second
 
         def sub(self):
-            self.result = self.first - self.second
+            self.__result = self.first - self.second
 
         def mul(self):
-            self.result = self.first * self.second
+            self.__result = self.first * self.second
 
         def div(self):
-            self.result = self.first / self.second
+            self.__result = self.first / self.second
 
         def get_result(self):
-            return self.result
+            return self.__result
 
     calculator1 = Calculator(4, 3)
     calculator1.add()
