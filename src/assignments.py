@@ -53,3 +53,38 @@ def ex4():
         return [person['name'] for person in people if person['age'] >= 15]
     
     print(get_people(people_list))
+
+def ex5():
+    class WordCounter:
+        def __init__(self, sentence):
+            self.sentence = sentence
+
+        def count_words(self):
+            self.word_count = len(self.sentence.split())
+        
+        def get_word_count(self):
+            return self.word_count
+        
+        def get_shortest_word(self):
+            shortest = None
+            for word in self.sentence.split():
+                if not shortest: shortest = word
+                if len(word) < len(shortest): shortest = word
+
+            return len(shortest)
+        
+        def get_longest_word(self):
+            longest = None
+            for word in self.sentence.split():
+                if not longest: longest = word
+                if len(word) > len(longest): longest = word
+
+            return len(longest)
+        
+    sentence = "This is a test of the emergency broadcast system"
+    word_counter = WordCounter(sentence)
+    word_counter.count_words()
+    print(word_counter.get_word_count())    # Returns the number of all the words.
+    print(word_counter.get_shortest_word()) # Returns the length of the shortest word.
+    print(word_counter.get_longest_word())  # Returns the length of the longest word.
+
