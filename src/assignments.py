@@ -1,5 +1,6 @@
 # define your methods here.
 # ex1() - ex10()
+import pprint
 
 def ex1():
     people_list = [
@@ -151,3 +152,28 @@ def ex7():
     calculator4 = Calculator(8, 2)
     calculator4.div()
     print(calculator4.get_result())
+
+def ex8():
+    class CarCollector:
+        car_list = [
+            {"id": 1, "price": 10000},
+            {"id": 2, "price": 20000},
+            {"id": 3, "price": 30000},
+        ]    
+        car_dict = {
+            1: "Ford",
+            2: "Mazda",
+            3: "Chevy"
+        }
+
+        @staticmethod
+        def get_data():
+            return list(map(CarCollector._combine, CarCollector.car_list))
+    
+        @staticmethod
+        def _combine(c):
+            new_car = c
+            new_car["make"] = CarCollector.car_dict[c["id"]]
+            return new_car
+        
+    print(CarCollector.get_data())
