@@ -88,3 +88,28 @@ def ex5():
     print(word_counter.get_shortest_word()) # Returns the length of the shortest word.
     print(word_counter.get_longest_word())  # Returns the length of the longest word.
 
+def ex6():
+    class TaxMan:
+        def __init__(self, items, tax):
+            self.items = items
+            self.tax = float(tax[:-1])/100
+            self.total = 0
+
+        def calc_total(self):
+            total = 0
+            for item in self.items:
+                total += item['price'] + item['price']*self.tax
+            
+            self.total = total
+
+        def get_total(self):
+            return self.total
+        
+    items = [
+        {"id": 1, "desc": "clock", "price": 1.00},
+        {"id": 2, "desc": "socks", "price": 2.00},
+        {"id": 3, "desc": "razor", "price": 3.00},
+    ]
+    tm = TaxMan(items, "10%")
+    tm.calc_total()
+    print(tm.get_total())
