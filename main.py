@@ -8,7 +8,8 @@ def main():
     # ex3()
     # ex4()
     # ex5()
-    ex6()
+    # ex6()
+    ex7()
 
 if __name__ == '__main__':
     main()
